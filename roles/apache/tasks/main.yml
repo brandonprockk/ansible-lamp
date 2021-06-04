@@ -1,0 +1,23 @@
+---
+- name: Installation d'Apache
+  apt:
+    #name: apache2="{{apacheVersion}}"
+    name: apache2
+    state: present
+  notify: verification version 2.4.29
+
+- name: Démarrage du service Apache
+  service:
+    name: apache2
+    state: started
+  register: recapApache
+
+- name: Etat du service
+  debug:
+    msg: "{{recapApache.state}}"
+
+- name: Copie du fichier toto.txt
+  copy:
+    src: files/apache2.conf
+    dest: /etc/apache2/apache.conf
+  notify: restart apache

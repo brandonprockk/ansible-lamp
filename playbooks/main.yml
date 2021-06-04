@@ -1,0 +1,13 @@
+---
+- hosts: all
+  remote_user: root
+  #vars_files:
+          #- "vars/{{app}}_vars.yml"
+          #- "vars/{{app}}_password.yml"
+  roles:
+          - role: apache
+            when: ansible_facts['distribution_version'] == "18.04"
+          - role: mysql 
+            when: ansible_facts['distribution_version'] == "18.04"
+          - role: php
+            when: ansible_facts['distribution_version'] == "18.04"

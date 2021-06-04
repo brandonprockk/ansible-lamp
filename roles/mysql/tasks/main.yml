@@ -1,0 +1,15 @@
+---
+- name: Installation de MySQL
+  apt:
+    name: mysql-server
+    state: present
+
+- name: Démarrage du service MySQL
+  service:
+    name: mysql
+    state: started
+  register: recapMYSQL
+
+- name: Etat du service
+  debug:
+    msg: "{{recapMYSQL.state}}"

@@ -1,0 +1,17 @@
+---
+- name: Installation de PHP
+  apt:
+    name: ['php', 'libapache2-mod-php']
+    update_cache: yes
+    state: present
+  #  register: recapPHP
+  
+  #- name: Démarrage du service PHP
+  #  service:
+  #    name: php
+  #    state: started
+
+    #- name: PHP bien installé ?
+    #  debug:
+    #    msg: "{{recapPHP}}"
+

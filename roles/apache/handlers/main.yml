@@ -1,0 +1,10 @@
+---
+- name: restart apache
+  service:
+    name: apache2
+    state: restarted
+
+- name: verification 2.4.29
+  command: apache2 -v
+  register: command_result
+  failed_when: "'2.4.29' not in command_result.stderr"
